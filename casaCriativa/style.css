@@ -7,19 +7,10 @@ body {
   margin: 0;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> commit in house
 .hide {
   display: none;
 }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> commit house
->>>>>>> commit in house
 a {
   color: #ff5e84;
   font-weight: bold;
@@ -133,13 +124,6 @@ footer a {
 
 .idea description {
   margin: 16px 0;
-
-<<<<<<< HEAD
-}
-=======
-<<<<<<< HEAD
-}
-=======
 }
 
 /* modal */
@@ -181,12 +165,6 @@ footer a {
 .content form div:nth-child(5) {
   grid-column: span 2;
 }
-
-/* 
-.input-wrapper {
-  border: solid 2px white;
-
-} */
 
 form input,
 form textarea {
@@ -252,5 +230,3 @@ form button:hover {
   opacity: 0;
   visibility: hidden;
 }
->>>>>>> commit house
->>>>>>> commit in house
