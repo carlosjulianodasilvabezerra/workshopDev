@@ -1,4 +1,4 @@
-/* funcionou, okay*/
+/* funcionou */
 body {
   /* border: solid 1px; */
   font-family: 'Montserrat', 'sans-serif';
@@ -8,12 +8,18 @@ body {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> commit in house
 .hide {
   display: none;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> commit house
+>>>>>>> commit in house
 a {
   color: #ff5e84;
   font-weight: bold;
@@ -131,6 +137,9 @@ footer a {
 <<<<<<< HEAD
 }
 =======
+<<<<<<< HEAD
+}
+=======
 }
 
 /* modal */
@@ -244,3 +253,4 @@ form button:hover {
   visibility: hidden;
 }
 >>>>>>> commit house
+>>>>>>> commit in house
