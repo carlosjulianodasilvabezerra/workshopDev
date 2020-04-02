@@ -3,53 +3,11 @@ const server = express()
 
 const db = require('./db')
 
-// const ideas = [
-//   {
-//     img: "https://image.flaticon.com/icons/svg/2729/2729007.svg",
-//     title: "Curso de Programação",
-//     category: "Estudo",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   },
-//   {
-//     img: "https://image.flaticon.com/icons/svg/2729/2729005.svg",
-//     title: "Exercícios",
-//     category: "Saúde",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   },
-//   {
-//     img: "https://image.flaticon.com/icons/svg/2729/2729027.svg",
-//     title: "Meditação",
-//     category: "Mentalidade",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   },
-//   {
-//     img: "https://image.flaticon.com/icons/svg/2729/2729027.svg",
-//     title: "Higienização das mãos",
-//     category: "Germes",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   },
-//   {
-//     img: "https://www.flaticon.com/premium-icon/icons/svg/2708/2708730.svg",
-//     title: "Novas ideas",
-//     category: "pensamento",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   },
-//   { 
-//     img: "https://www.flaticon.com/premium-icon/icons/svg/2759/2759663.svg",
-//     title: "Oração",
-//     category: "Religião",
-//     description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate quasi similique suscipit, molestiae asperiores nam! Sapiente in quidem earum deleniti tempora temporibus ipsa, enim vitae sit nemo id officia.",
-//     url: "https://rocketseat.com.br"
-//   }
-// ] 
-
 // configurar arquivos estáticos (css, scripts, imagens)
 server.use(express.static("public"))
+
+// habilitar uso do req.body
+server.use(express.urlencoded({ extended: true }))
 
 //configuração do nunjucks
 const nunjucks = require('nunjucks')
@@ -97,6 +55,31 @@ server.get("/ideias", (req, res) => {
 
   })
 
+})
+
+server.post("/", function(req, res) {
+  const query = `
+    INSERT INTO ideas(
+      image,
+      title,
+      category,
+      description,
+      link
+    ) VALUES (?,?,?,?,?);
+  `
+  const values = [
+    req.body.image,
+    req.body.title,
+    req.body.category,
+    req.body.description,
+    req.body.link,
+    ]
+
+  db.run(query, values, function(err) {
+    if (err) return console.log(err)
+
+    return res.redirect('/ideias')
+  })
 })
 
 // liguei meu servidor na porta 3001
